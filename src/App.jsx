@@ -1,17 +1,39 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
+import { useEffect, useState } from "react";
 import "./App.css";
-import { Cards } from "./components/Cards/Cards";
+import { Card } from "./components/Card/Card";
+import { Filter } from "./components/Filter/Filter";
 import { Homepage } from "./components/Homepage/Homepage";
+import { LoadMoreButton } from "./components/LoadMoreButton/LoadMoreButton";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsersThunk } from "./redux/operations";
+import { selectUsers } from "./redux/selectors";
 
 function App() {
   // const [count, setCount] = useState(0)
+    const [page, setPage] = useState(1);
+
+const dispatch = useDispatch();
+
+const cards = useSelector(selectUsers);
+
+useEffect(() => {
+  dispatch(getUsersThunk());
+}, [dispatch]);
+
+
+  const handleClickLoadMore = () => {
+    setPage((prev) => prev + 1);
+  };
 
   return (
     <>
       <Homepage />
-      <Cards />
+      <Filter />
+      <Card cards={cards} />
+      <LoadMoreButton handleClickLoadMore={handleClickLoadMore} />
     </>
   );
 }
