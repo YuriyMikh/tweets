@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUsersThunk } from "./operations";
+import { getUsersThunk, updateUserThunk } from "./operations";
 
 const initialState = {
   items: [],
@@ -25,7 +25,18 @@ const usersSlice = createSlice({
       })
       .addCase(getUsersThunk.pending, (state) => {
         state.isLoading = true;
-      });
+      })
+      .addCase(updateUserThunk.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(updateUserThunk.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      }).addCase(updateUserThunk.pending, (state) => {
+        state.isLoading = true;
+      })
   },
 });
 
