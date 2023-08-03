@@ -5,7 +5,7 @@
 import "./App.css";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
-import { Homepage } from "./pages/Homepage/Homepage";
+import { Homepage } from "./pages/HomePage/HomePage";
 import { CardsPage } from "./pages/CardsPage/CardsPage";
 
 function App() {
