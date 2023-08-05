@@ -26,7 +26,7 @@ export const Card = ({ cards }) => {
             <img src={el.avatar} alt={el.user} />
             <p>{el.tweets}</p>
             <p>{el.followers}</p>
-            <button>follow</button>
+            <button onClick={()=>{console.log('click to button follow');}}>follow</button>
           </li>
         ))}
       </ul>

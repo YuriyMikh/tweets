@@ -8,7 +8,9 @@ import { LoadMoreButton } from "../../components/LoadMoreButton/LoadMoreButton";
 import { Link, useLocation } from "react-router-dom";
 
 export const CardsPage = () => {
-  const [page, setPage] = useState(1);
+  const [
+    // page,
+    setPage] = useState(1);
 
   const dispatch = useDispatch();
   const location = useLocation();
